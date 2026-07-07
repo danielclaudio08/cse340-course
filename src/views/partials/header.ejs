@@ -12,9 +12,42 @@
 
 <body>
   <nav>
-    <ul>
-      <li><a href="/">Home Page</a></li>
-      <li><a href="/organizations">Organizations</a></li>
-      <li><a href="/projects">Projects</a></li>
+    <button class="menu-toggle" aria-label="Toggle Navigation">
+      ☰
+    </button>
+
+    <ul class="nav-links">
+      <li>
+        <a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="/organizations" class="<%= currentPage === 'organizations' ? 'active' : '' %>">
+          Organizations
+        </a>
+      </li>
+
+      <li>
+        <a href="/projects" class="<%= currentPage === 'projects' ? 'active' : '' %>">
+          Projects
+        </a>
+      </li>
+
+      <li>
+        <a href="/categories" class="<%= currentPage === 'categories' ? 'active' : '' %>">
+          Categories
+        </a>
+      </li>
     </ul>
   </nav>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
