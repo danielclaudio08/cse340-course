@@ -176,3 +176,56 @@ SELECT
   *
 FROM
   service_project;
+
+-- Service Category Table
+CREATE TABLE
+  service_category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+  );
+
+-- Project Category Table
+CREATE TABLE
+  project_category (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    FOREIGN KEY (project_id) REFERENCES service_project (project_id),
+    FOREIGN KEY (category_id) REFERENCES service_category (category_id)
+  );
+
+INSERT INTO
+  service_category (name)
+VALUES
+  ('Environmental'),
+  ('Educational'),
+  ('Community Service');
+
+SELECT
+  *
+FROM
+  service_category;
+
+INSERT INTO
+  project_category (project_id, category_id)
+VALUES
+  (1, 3),
+  (2, 3),
+  (3, 3),
+  (4, 2),
+  (5, 3),
+  (6, 2),
+  (7, 1),
+  (8, 1),
+  (9, 2),
+  (10, 1),
+  (11, 3),
+  (12, 2),
+  (13, 3),
+  (14, 3),
+  (15, 3);
+
+SELECT
+  *
+FROM
+  project_category;
