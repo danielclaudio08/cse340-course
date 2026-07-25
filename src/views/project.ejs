@@ -29,6 +29,18 @@
       </a>
     </p>
 
+    <h3>Categories</h3>
+
+    <ul>
+      <% categories.forEach(category=> { %>
+        <li>
+          <a href="/category/<%= category.category_id %>" style="text-decoration: none;" class="card-link">
+            <%= category.name %>
+          </a>
+        </li>
+        <% }) %>
+    </ul>
+
   </main>
 
   <%- include('partials/footer') %>
