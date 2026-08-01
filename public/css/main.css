@@ -11,7 +11,8 @@
   --text: var(--charcoal);
   --heading: var(--black);
   --nav-bg: var(--black);
-  --hover: #a1a1aa;
+  --hover1: #a1a1aa;
+  --hover2: #0056B3;
   --border: #e4e4e7;
 }
 
@@ -212,6 +213,208 @@ main ul li>.card-link:focus {
   background-color: var(--gray);
 }
 
+main>p>a,
+main>a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  margin-right: 0.75rem;
+  padding: 0.7rem 1.2rem;
+
+  background-color: var(--charcoal);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+
+  border-radius: 0.5rem;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+main>p>a:hover,
+main>a:hover,
+main>p>a:focus,
+main>a:focus {
+  background-color: var(--hover2);
+  transform: translateY(-2px);
+}
+
+/* Flash message styles */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert.warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.alert.info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* ===== CATEGORY FORMS ===== */
+
+form {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: .45rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: .85rem 1rem;
+
+  font: inherit;
+  color: var(--text);
+
+  background: var(--white);
+
+  border: 1px solid var(--gray);
+  border-radius: .6rem;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease;
+}
+
+form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+form select {
+  cursor: pointer;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--hover2);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, .15);
+}
+
+form button {
+  align-self: flex-start;
+
+  padding: .85rem 1.6rem;
+
+  background: var(--charcoal);
+  color: var(--white);
+
+  border: none;
+  border-radius: .6rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color .2s ease,
+    transform .2s ease;
+}
+
+button:hover,
+button:focus {
+  background: var(--hover2);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.form-group>div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  width: 100%;
+  padding: 0.9rem 1rem;
+
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.form-group>div:hover {
+  background: #eef4ff;
+  border-color: var(--hover2);
+  transform: translateY(-2px);
+}
+
+.form-group input[type="checkbox"] {
+  width: 1.3rem;
+  height: 1.3rem;
+
+  margin: 0;
+
+  cursor: pointer;
+  accent-color: var(--hover2);
+}
+
+.form-group input[type="checkbox"]+label {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
 /* ===== DESKTOP ===== */
 
 @media (min-width: 768px) {
@@ -239,5 +442,21 @@ main ul li>.card-link:focus {
 
   main ul {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  form {
+    max-width: 820px;
+    padding: 2.5rem;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    font-size: 1.05rem;
+    padding: 1rem 1.1rem;
+  }
+
+  button {
+    padding: 0.95rem 1.8rem;
   }
 }
