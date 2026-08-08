@@ -40,6 +40,13 @@
           Categories
         </a>
       </li>
+
+      <% if (isLoggedIn) { %>
+        <li> <a href="/logout">Logout</a> </li>
+        <% } else { %>
+          <li> <a href="/register" class="<%= currentPage === 'register' ? 'active' : '' %>"> Register </a> </li>
+          <li> <a href="/login" class="<%= currentPage === 'login' ? 'active' : '' %>"> Login </a> </li>
+          <% } %>
     </ul>
   </nav>
 
