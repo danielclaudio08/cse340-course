@@ -68,8 +68,8 @@ nav {
 
 .nav-links a.active {
   color: var(--white);
-  border-bottom: 2px solid var(--hover);
-  padding-bottom: 0.2rem;
+  border-bottom: 3px solid var(--hover2);
+  padding-bottom: 0.3rem;
 }
 
 .nav-links {
@@ -413,6 +413,22 @@ button:active {
   font-weight: 600;
 
   cursor: pointer;
+}
+
+.registered-users ul li {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.registered-users ul li p {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.registered-users ul li strong {
+  display: inline;
+  margin: 0;
+  margin-right: 0.5rem;
 }
 
 /* ===== DESKTOP ===== */

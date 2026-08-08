@@ -16,7 +16,7 @@
       ☰
     </button>
 
-    <ul class="nav-links">
+    <ul id="navLinks" class="nav-links">
       <li>
         <a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>">
           Home
@@ -42,11 +42,42 @@
       </li>
 
       <% if (isLoggedIn) { %>
-        <li> <a href="/logout">Logout</a> </li>
-        <% } else { %>
-          <li> <a href="/register" class="<%= currentPage === 'register' ? 'active' : '' %>"> Register </a> </li>
-          <li> <a href="/login" class="<%= currentPage === 'login' ? 'active' : '' %>"> Login </a> </li>
+
+        <li>
+          <a href="/dashboard" class="<%= currentPage === 'dashboard' ? 'active' : '' %>">
+            Dashboard
+          </a>
+        </li>
+
+        <% if (user && user.role_name==='admin' ) { %>
+          <li>
+            <a href="/users" class="<%= currentPage === 'users' ? 'active' : '' %>">
+              Users
+            </a>
+          </li>
           <% } %>
+
+            <li>
+              <a href="/logout">
+                Logout
+              </a>
+            </li>
+
+            <% } else { %>
+
+              <li>
+                <a href="/register" class="<%= currentPage === 'register' ? 'active' : '' %>">
+                  Register
+                </a>
+              </li>
+
+              <li>
+                <a href="/login" class="<%= currentPage === 'login' ? 'active' : '' %>">
+                  Login
+                </a>
+              </li>
+
+              <% } %>
     </ul>
   </nav>
 
@@ -60,12 +91,11 @@
   </script>
 
   <% const messages=flash(); %>
+
     <% Object.keys(messages).forEach(type=> { %>
       <% if (messages[type].length> 0) { %>
-
         <% messages[type].forEach(msg=> { %>
           <%= msg %>
             <% }); %>
-
               <% } %>
                 <% }); %>

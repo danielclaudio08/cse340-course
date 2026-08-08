@@ -30,6 +30,20 @@ app.use(session({
 // Use flash message middleware
 app.use(flash);
 
+// Middleware to make NODE_ENV available to all templates
+app.use((req, res, next) => {
+  res.locals.isLoggedIn = false;
+
+  if (req.session && req.session.user) {
+    res.locals.isLoggedIn = true;
+  }
+
+  res.locals.user = req.session.user || null;
+  res.locals.NODE_ENV = NODE_ENV;
+
+  next();
+});
+
 // Allow Express to receive and process common POST data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -53,20 +67,6 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
   }
   next(); // Pass control to the next middleware or route
-});
-
-// Middleware to make NODE_ENV available to all templates
-app.use((req, res, next) => {
-  res.locals.isLoggedIn = false;
-
-  if (req.session && req.session.user) {
-    res.locals.isLoggedIn = true;
-  }
-
-  res.locals.user = req.session.user || null;
-  res.locals.NODE_ENV = NODE_ENV;
-  
-  next();
 });
 
 // Use the imported router to handle routes
