@@ -5,6 +5,8 @@ import {
   getAllUsers
 } from '../models/users.js';
 
+import { getProjectsByUserId } from '../models/projects.js';
+
 const showUserRegistrationForm = (req, res) => {
   res.render('register', {
     title: 'Register',
@@ -100,14 +102,36 @@ const requireRole = (role) => {
   };
 };
 
-const showDashboard = (req, res) => {
+const showDashboard = async (req, res) => {
   const user = req.session.user;
-  res.render('dashboard', {
-    title: 'Dashboard',
-    currentPage: 'dashboard',
-    name: user.name,
-    email: user.email
-  });
+
+  try {
+    const volunteerProjects = await getProjectsByUserId(user.user_id);
+
+    res.render('dashboard', {
+      title: 'Dashboard',
+      currentPage: 'dashboard',
+      name: user.name,
+      email: user.email,
+      volunteerProjects
+    });
+
+  } catch (error) {
+    console.error('Error retrieving volunteer projects:', error);
+
+    req.flash(
+      'error',
+      'Unable to retrieve your volunteer projects.'
+    );
+
+    res.render('dashboard', {
+      title: 'Dashboard',
+      currentPage: 'dashboard',
+      name: user.name,
+      email: user.email,
+      volunteerProjects: []
+    });
+  }
 };
 
 const showUsers = async (req, res) => {
@@ -136,5 +160,5 @@ export {
   requireLogin,
   requireRole,
   showDashboard,
-  showUsers
+  showUsers,
 };

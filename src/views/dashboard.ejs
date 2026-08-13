@@ -5,12 +5,69 @@
       <%= title %>
     </h1>
 
-    <h2>Dashboard</h2>
-
     <p>Name: <%= name %>
     </p>
     <p>Email: <%= email %>
     </p>
+
+    <section class="volunteer-projects">
+
+      <h2>My Volunteer Projects</h2>
+
+      <% if (volunteerProjects && volunteerProjects.length> 0) { %>
+
+        <div class="volunteer-project-list">
+
+          <% volunteerProjects.forEach(project=> { %>
+
+            <article class="volunteer-project-card">
+
+              <div class="volunteer-project-info">
+
+                <h3>
+                  <a href="/project/<%= project.project_id %>">
+                    <%= project.title %>
+                  </a>
+                </h3>
+
+                <p>
+                  <strong>Organization:</strong>
+                  <%= project.organization_name %>
+                </p>
+
+                <p>
+                  <strong>Location:</strong>
+                  <%= project.location %>
+                </p>
+
+                <p>
+                  <strong>Date:</strong>
+                  <%= project.project_date %>
+                </p>
+
+              </div>
+
+              <div class="volunteer-project-action">
+                <a href="/project/<%= project.project_id %>/unvolunteer">
+                  Remove Volunteer Signup
+                </a>
+              </div>
+
+            </article>
+
+            <% }); %>
+
+        </div>
+
+        <% } else { %>
+
+          <div class="volunteer-empty">
+            <p>You are not currently volunteering for any service projects.</p>
+          </div>
+
+          <% } %>
+
+    </section>
 
     <% if (user && user.role_name==='admin' ) { %>
       <p>

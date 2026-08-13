@@ -431,6 +431,142 @@ button:active {
   margin-right: 0.5rem;
 }
 
+/* ===== VOLUNTEER PROJECTS ===== */
+
+.volunteer-projects {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.volunteer-projects h2 {
+  margin-bottom: 1.5rem;
+  color: var(--heading);
+  text-align: left;
+}
+
+.volunteer-project-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.volunteer-project-card {
+  width: 100%;
+
+  padding: 1.5rem;
+
+  background-color: var(--light);
+
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.volunteer-project-card:hover {
+  border-color: var(--gray);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.volunteer-project-info {
+  width: 100%;
+}
+
+.volunteer-project-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+  color: var(--heading);
+  text-align: left;
+}
+
+.volunteer-project-card h3 a {
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.volunteer-project-card h3 a:hover,
+.volunteer-project-card h3 a:focus {
+  color: var(--hover2);
+}
+
+.volunteer-project-card p {
+  width: 100%;
+  margin: 0.6rem 0;
+
+  color: var(--text);
+  text-align: left;
+}
+
+.volunteer-project-card strong {
+  display: inline;
+
+  margin: 0;
+  margin-right: 0.4rem;
+
+  color: var(--heading);
+  font-size: 1rem;
+}
+
+.volunteer-project-action {
+  width: 100%;
+  margin-top: 1rem;
+
+  text-align: left;
+}
+
+.volunteer-project-action a {
+  display: inline-block;
+
+  padding: 0.7rem 1.1rem;
+
+  background-color: var(--charcoal);
+  color: var(--white);
+
+  border-radius: 0.5rem;
+
+  text-decoration: none;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.volunteer-project-action a:hover,
+.volunteer-project-action a:focus {
+  background-color: var(--hover2);
+  transform: translateY(-2px);
+}
+
+.volunteer-empty {
+  width: 100%;
+
+  padding: 1.5rem;
+
+  background-color: var(--light);
+
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+
+  text-align: left;
+}
+
+.volunteer-empty p {
+  margin: 0;
+  color: var(--dark-gray);
+}
+
 /* ===== DESKTOP ===== */
 
 @media (min-width: 768px) {
@@ -474,5 +610,9 @@ button:active {
 
   button {
     padding: 0.95rem 1.8rem;
+  }
+
+  .volunteer-project-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

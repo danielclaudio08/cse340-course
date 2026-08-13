@@ -30,7 +30,9 @@ import {
   processNewProjectForm,
   showEditProjectForm,
   processEditProjectForm,
-  projectValidation
+  projectValidation,
+  processVolunteer,
+  processRemoveVolunteer
 } from './controllers/projects.js';
 
 import {
@@ -173,5 +175,17 @@ router.get('/dashboard', requireLogin, showDashboard);
 
 // Admin-only users route
 router.get('/users', requireRole('admin'), showUsers);
+
+router.get(
+  '/project/:id/volunteer',
+  requireLogin,
+  processVolunteer
+);
+
+router.get(
+  '/project/:id/unvolunteer',
+  requireLogin,
+  processRemoveVolunteer
+);
 
 export default router;

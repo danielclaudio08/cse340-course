@@ -258,3 +258,13 @@ CREATE TABLE
     role_id INTEGER REFERENCES roles (role_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
+
+-- Project Volunteer Table
+CREATE TABLE
+  project_volunteer (
+    user_id INT NOT NULL,
+    project_id INT NOT NULL,
+    PRIMARY KEY (user_id, project_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES service_project (project_id) ON DELETE CASCADE
+  );
